@@ -1,0 +1,41 @@
+{% load static %}
+
+{% block styles %}
+<!-- Font Awesome -->
+<link rel="stylesheet" href="{% static 'admin-lte/plugins/fontawesome-free/css/all.min.css' %}">
+<!-- Ionicons -->
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'admin-lte/dist/css/adminlte.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+<!-- chart.js用のリンク（棒グラフ） -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"></script>
+
+<!-- datatable用のリンク -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+<script>
+  jQuery(function($){
+	$.extend( $.fn.dataTable.defaults, {
+		language: { url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Japanese.json" }
+	});
+
+	$("#foo-table").DataTable({
+    // 件数切替機能 
+    lengthChange: true,
+    // 検索機能 
+    searching: true,
+    // ソート機能 
+    ordering: true,
+    // 情報表示 
+    info: true,
+    // ページング機能 
+    paging: true
+});
+});
+</script>
+
+{% endblock %}

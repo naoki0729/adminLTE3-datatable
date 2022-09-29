@@ -1,0 +1,127 @@
+{% load adminlte_helpers i18n %}
+{% load static %}
+
+
+       <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Dashboard 1</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard 1</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+
+ <!-- Main content -->
+            {% block content_outer %}
+            <section class="content">
+                {% block messages %}
+                    {% include '_messages.html' %}
+                {% endblock %}
+                
+                {% block content_block_wrap %}
+{% block content %}
+<!-- ここからメインを書いていく -->
+                  
+<!-- 引数でviews.pyから引っ張っている -->
+<!-- ここから下は棒グラフだが、viewからurlにはひとつしか渡せないので一旦コメントアウトする -->
+
+<!-- <canvas id="barChart"></canvas>
+<script type="text/javascript">
+
+    // Django viewとの接続方法とsafeの記述
+    const ctx = document.getElementById('barChart').getContext('2d');
+    const barChart = new Chart(ctx, {
+       type: 'bar',
+       data: {
+           labels: {{ chart_label|safe }},
+           datasets: [{
+               data: {{ chart_data|safe }},
+               backgroundColor: [
+                   'rgba(255, 99, 132, 0.2)',
+                   'rgba(54, 162, 235, 0.2)',
+                   'rgba(255, 206, 86, 0.2)',
+                   'rgba(75, 192, 192, 0.2)',
+                   'rgba(153, 102, 255, 0.2)',
+                   'rgba(255, 159, 64, 0.2)'
+               ],
+               borderColor: [
+                   'rgba(255, 99, 132, 1)',
+                   'rgba(54, 162, 235, 1)',
+                   'rgba(255, 206, 86, 1)',
+                   'rgba(75, 192, 192, 1)',
+                   'rgba(153, 102, 255, 1)',
+                   'rgba(255, 159, 64, 1)'
+               ],
+           }]
+       },
+       options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+  </script> -->
+
+
+<!-- datatableを作成する -->
+<!-- 必要なリンクは_styles.htmlにある -->
+<!-- 同様にデータテーブル化する関数もそこにある -->
+<!-- 日本語設定もしてある -->
+
+<table id="foo-table" class="table table-bordered">
+  <thead>
+      <tr><th>番号</th><th>都道府県</th></tr>
+  </thead>
+  <tbody>
+    {% for item in object_list %}
+     <tr>
+       <td>{{item.id}}</td>
+       <td>{{item.name}}</td>
+     </tr>
+     {% endfor %}
+  </tbody>
+</table>
+
+                    {% endblock %}
+                {% endblock %}
+            {% endblock %}
+           </section>
+           </div>
+
+<!-- viewsのmyapp_list_viewとurlを有効にしてでうまくいくもの -->
+<!-- 
+<p><strong>[辞書の展開：キーと値]</strong></p>
+{% for key, value in object_list.items %}
+    <p>{{ key }}: {{ value }}</p>
+{% endfor %} -->
+
+
+
+<!-- なぜ上手くいかなかったのかが分からない 
+<table id="foo-table" class="table table-bordered">
+  <thead>
+      <tr><th>頭文字</th><th>言語</th></tr>
+  </thead>
+  <tbody>
+    表示されなかった
+    {% for key,value in object_dict.itmes %}
+    <tr><td>{{ key }}</td>
+      <td>{{ value }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table> -->
+            
