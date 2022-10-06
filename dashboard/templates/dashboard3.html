@@ -1,0 +1,203 @@
+
+{% load adminlte_helpers i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% block title_outer %}
+        <title>{% block title %}{{ site.name }}{% endblock %}</title>
+        
+        
+    {% endblock %}
+
+    {% block meta %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    {% endblock %}
+
+    {% block stylesheets %}
+        {% include '_styles.html' %}
+        {% block style_sheets %}{% endblock %}
+    {% endblock %}
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="hold-transition sidebar-mini {% block body_class %}{% block bodyclass %}layout-fixed {% endblock %}{% endblock %}">
+
+{% block body %}
+    <div class="wrapper">
+        <!-- Left navbar links -->
+        <!-- SEARCH FORM -->
+        {% block nav_header %}
+            {% include '_main_header.html' %}
+        {% endblock %}
+        
+        <!-- Main Sidebar Container -->
+        <!-- Sidebar -->
+        <!-- Sidebar Menu -->
+        {% block nav_sidebar %}
+        {% load adminlte_helpers %}
+        {%load static %}
+        <!-- Left side column. contains the sidebar -->
+        <aside class="main-sidebar sidebar-dark-primary  elevation-4">
+             <!-- Brand Logo -->
+            {% block logo %}
+                <a href="/" class="brand-link">
+                    <img src="/media/images/icon-72x72.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                    {% block logo_text %}<span class="brand-text font-weight-light">AdminLTE 3 </span>{% endblock %}
+                </a>
+            {% endblock %}
+            <!-- sidebar: style can be found in sidebar.less -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                  <div class="image">
+                    <img src="/media/images/icon-72x72.png" class="img-circle elevation-2" alt="User Image">
+                  </div>
+                  <div class="info">
+                    <a href="#" class="d-block">久保直樹</a>
+                  </div>
+                </div>
+        
+                <form class="form-inline">
+                    <div class="input-group">
+                      <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                      <div class="input-group-append">
+                        <button class="btn btn-sidebar" type="submit">
+                          <i class="fas fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                </form>
+          
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                  <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+                    <!-- Add icons to the links using the .nav-icon class
+                         with font-awesome or any other icon font library -->
+                    <li class="nav-item has-treeview menu-open">
+                      <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                          Dashboard
+                          <i class="right fas fa-angle-left"></i>
+                        </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                          <a href="{% url 'dashboard:main' %}"  class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Dashboard 1</p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="{% url 'dashboard:dashboard2' %}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Dashboard 2</p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="dashboard3.html" class="nav-link active">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Dashboard 3</p>
+                            </a>
+                          </li>
+                      </ul>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                          Simple link
+                          <span class="right badge badge-danger">New</span>
+                        </p>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+              </div>
+              <!-- /.sidebar -->
+        </aside>
+        
+        {% endblock %}
+
+    {% block contents %}
+       <!-- Content Wrapper. Contains page content -->
+       <!-- Main content -->
+   <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Dashboard 3</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard 3</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+
+ <!-- Main content -->
+ {% block content_outer %}
+ <section class="content">
+     {% block messages %}
+         {% include '_messages.html' %}
+     {% endblock %}
+
+     {% block content_block_wrap %}
+         {% block content %}
+       <!-- ここからメインを書いていく -->
+       
+      
+aaaaa
+
+
+
+
+
+         {% endblock %}
+     {% endblock %}
+ </section>
+ {% endblock %}
+
+</div>
+
+
+    {% endblock %}
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+        <a class="nav-link" data-widget="control-sidebar" href="#">Toggle Control Sidebar</a>
+       </aside>
+  <!-- /.control-sidebar -->
+
+  <!-- Main Footer -->
+        {% block nav_footer %}
+            {% include '_main_footer.html' %}
+        {% endblock %} 
+
+    </div>
+{% endblock body %}
+<!-- ./wrapper -->
+
+{% block javascript %}
+{% include '_scripts.html' %}
+{% block js %}{% endblock %}
+{% endblock %}
+
+{% block extra_js %}{% endblock %}
+
+{% block extra_foot %}{% endblock %}
+</body>
+</html>
