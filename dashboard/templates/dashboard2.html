@@ -5,7 +5,7 @@
 <html>
 <head>
     {% block title_outer %}
-        <title>{% block title %}{{ site.name }}{% endblock %}</title>
+        <title>{% block title %}Dashboard{% endblock %}</title>
         
         
     {% endblock %}
@@ -21,7 +21,12 @@
         {% block style_sheets %}{% endblock %}
     {% endblock %}
 
-    {% block extra_head %}{% endblock %}
+
+{% block extra_head %}
+<link rel="icon" href="/media/images/favicon.ico">
+<link rel="apple-touch-icon" href="/media/images/apple-touch-icon-180x180-precomposed.png">
+{% endblock %}
+
 </head>
 <body class="hold-transition sidebar-mini {% block body_class %}{% block bodyclass %}layout-fixed {% endblock %}{% endblock %}">
 

@@ -1,5 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import ListView
+import io
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import base64
 
 
 
@@ -36,11 +41,30 @@ class MainView:
 #     template_name = "dashboard3.html"
 
 def Dash2_view(request):
-    chart_label = ['レッド', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']
+    chart_label = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']
     chart_data = [1, 5, 1, 0, 0, 0]
     context = {'chart_data': chart_data, 'chart_label': chart_label}
     return render(request, "dashboard2.html",context)
 
+
+def create_graph(x_list,t_list):
+    plt.cla()
+    plt.plot(t_list, x_list, label="x")
+    plt.xlabel('t')
+    plt.ylabel('x')
+
+def get_image():
+    buffer = io.BytesIO()
+    plt.savefig(buffer, format='png')
+    image_png = buffer.getvalue()
+    graph = base64.b64encode(image_png)
+    graph = graph.decode('utf-8')
+    buffer.close()
+    return graph
+
 def Dash3_view(request):
-    
-    return render(request, "dashboard3.html")
+    x_list = [3, 6, 12, 24, 48, 96, 192, 384, 768, 1536, 3072]
+    t_list = [1,2,3,4,5,6,7,8,9,10,11]
+    create_graph(x_list, t_list)
+    graph = get_image()
+    return render(request, "dashboard3.html", {'graph': graph})
